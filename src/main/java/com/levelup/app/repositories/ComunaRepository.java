@@ -2,6 +2,8 @@ package com.levelup.app.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-public interface ComunaRepository extends CrudRepository<ComunaRepository, Long> {
+import com.levelup.app.entities.Comuna;
+
+public interface ComunaRepository extends CrudRepository<Comuna, Long> {
 
 }
