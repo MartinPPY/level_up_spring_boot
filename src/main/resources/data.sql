@@ -29,5 +29,16 @@ INSERT INTO role(name)VALUES
 ('ROLE_VENDEDOR'),
 ('ROLE_ADMIN');
 
+INSERT INTO category (name) VALUES
+('Juegos de Mesa'),
+('Accesorios'),
+('Consolas'),
+('Computadores Gamers'),
+('Sillas Gamers'),
+('Mouse'),
+('Mousepad'),
+('Poleras Personalizadas');
+
+
 
 
