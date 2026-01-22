@@ -32,7 +32,7 @@ public class User {
     @Column(nullable = true)
     private LocalDate birthday;
 
-    @Column(nullable = false,length = 10)
+    @Column(nullable = false)
     private String password;
 
     @ManyToOne

@@ -24,5 +24,10 @@ INSERT INTO comuna (name, region_id) VALUES
 ('Viña del Mar', (SELECT id FROM region WHERE name='Región de Valparaíso')),
 ('Quilpué', (SELECT id FROM region WHERE name='Región de Valparaíso'));
 
+INSERT INTO role(name)VALUES
+('ROLE_USER'),
+('ROLE_VENDEDOR'),
+('ROLE_ADMIN');
+
 
 
