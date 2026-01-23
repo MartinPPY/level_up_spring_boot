@@ -39,7 +39,6 @@ public class AppConfig {
         return httpSecurity.authorizeHttpRequests(authz -> authz
                 .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/locations/**").permitAll()
-                .requestMatchers(HttpMethod.GET,"/auth/**").permitAll()
                 .requestMatchers(
                         "/swagger-ui.html",
                         "/swagger-ui/**",
