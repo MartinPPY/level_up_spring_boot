@@ -16,6 +16,9 @@ public class Product {
     @Column(length = 100, nullable = false)
     private String name;
 
+    @Column(length = 500, nullable = true)
+    private String description;
+
     @Column(nullable = false)
     private Double precio;
 
