@@ -75,4 +75,12 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
 
     }
 
+    @Override
+    protected boolean shouldNotFilter(HttpServletRequest request) {
+        String path = request.getServletPath();
+        return path.startsWith("/swagger")
+                || path.startsWith("/v3/api-docs")
+                || path.startsWith("/auth");
+    }
+
 }
