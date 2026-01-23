@@ -37,7 +37,7 @@ public class AppConfig {
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.authorizeHttpRequests(authz -> authz
                 .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
-                .requestMatchers(HttpMethod.GET,"/locations").permitAll()
+                .requestMatchers(HttpMethod.GET,"/locations/**").permitAll()
                 .anyRequest().authenticated())
                 .addFilter(new JwtAuthenticationFilter(authenticationManager()))
                 .addFilter(new JwtValidationFilter(authenticationManager()))
