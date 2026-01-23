@@ -2,13 +2,16 @@ package com.levelup.app.entities;
 
 import java.time.LocalDate;
 
+import org.hibernate.validator.constraints.Length;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToOne;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 
 @Entity(name = "users")
 public class User {
@@ -17,18 +20,26 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 9)
+    @Length(min = 7, max = 9)
+    @NotBlank
+    @Column(nullable = false, length = 9, unique = true)
     private String run;
 
+    @Length(max = 50)
+    @NotBlank
     @Column(nullable = false, length = 50)
     private String name;
 
+    @Length(max = 100)
+    @NotBlank
     @Column(nullable = false, length = 100)
     private String lastname;
 
-    @Column(nullable = false, length = 100)    
+
+    @Column(nullable = false, length = 100, unique = true)
     private String email;
 
+    @NotNull
     @Column(nullable = true)
     private LocalDate birthday;
 
@@ -38,12 +49,14 @@ public class User {
     @ManyToOne
     private Comuna comuna;
 
-    @OneToOne
+    @ManyToOne
     private Role role;
 
-    public User(){}
+    public User() {
+    }
 
-    public User(String run, String name, String lastname, String email, LocalDate birthday, String password,Comuna comuna,Role role) {
+    public User(String run, String name, String lastname, String email, LocalDate birthday, String password,
+            Comuna comuna, Role role) {
         this.run = run;
         this.name = name;
         this.lastname = lastname;
@@ -102,8 +115,6 @@ public class User {
         this.birthday = birthday;
     }
 
-
-
     public Comuna getComuna() {
         return comuna;
     }
@@ -127,12 +138,5 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    
-    
-
-    
-    
-
 
 }

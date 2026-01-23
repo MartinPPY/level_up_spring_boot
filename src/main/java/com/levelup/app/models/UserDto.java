@@ -1,5 +1,10 @@
 package com.levelup.app.models;
 
+import org.hibernate.validator.constraints.Length;
+
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Pattern;
+
 public class UserDto {
 
     private String run;
@@ -22,8 +27,6 @@ public class UserDto {
         this.comunaId = comunaId;
         this.role = role;
     }
-
-
 
     public String getRun() {
         return run;
@@ -49,6 +52,9 @@ public class UserDto {
         this.lastname = lastname;
     }
 
+    @Length(max = 100)
+    @NotBlank
+    @Pattern(regexp = "^[A-Za-z0-9._%+-]+@(gmail\\.com|duoc\\.cl|duocuc\\.cl)$", message = "Solo se permiten correos gmail.com, duoc.cl o duocuc.cl")
     public String getEmail() {
         return email;
     }
@@ -88,7 +94,5 @@ public class UserDto {
     public void setRole(Integer role) {
         this.role = role;
     }
-
-    
 
 }
