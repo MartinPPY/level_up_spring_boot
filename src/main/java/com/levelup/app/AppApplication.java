@@ -8,9 +8,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
-import com.levelup.app.entities.Comuna;
-import com.levelup.app.entities.Role;
-import com.levelup.app.entities.User;
+import com.levelup.app.models.Comuna;
+import com.levelup.app.models.Role;
+import com.levelup.app.models.User;
 import com.levelup.app.repositories.ComunaRepository;
 import com.levelup.app.repositories.RoleRepository;
 import com.levelup.app.repositories.UserRepository;

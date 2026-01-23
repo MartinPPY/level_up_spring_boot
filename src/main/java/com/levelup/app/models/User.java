@@ -1,8 +1,7 @@
-package com.levelup.app.entities;
+package com.levelup.app.models;
 
 import java.time.LocalDate;
 
-import org.hibernate.validator.constraints.Length;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -10,8 +9,6 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
-import jakarta.validation.constraints.NotBlank;
-import jakarta.validation.constraints.NotNull;
 
 @Entity(name = "users")
 public class User {
@@ -20,18 +17,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Length(min = 7, max = 9)
-    @NotBlank
     @Column(nullable = false, length = 9, unique = true)
     private String run;
-
-    @Length(max = 50)
-    @NotBlank
+    
     @Column(nullable = false, length = 50)
     private String name;
 
-    @Length(max = 100)
-    @NotBlank
     @Column(nullable = false, length = 100)
     private String lastname;
 
@@ -39,7 +30,6 @@ public class User {
     @Column(nullable = false, length = 100, unique = true)
     private String email;
 
-    @NotNull
     @Column(nullable = true)
     private LocalDate birthday;
 

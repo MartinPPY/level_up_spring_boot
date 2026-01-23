@@ -1,4 +1,4 @@
-package com.levelup.app.entities;
+package com.levelup.app.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;

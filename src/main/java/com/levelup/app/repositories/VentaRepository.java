@@ -2,7 +2,7 @@ package com.levelup.app.repositories;
 
 import org.springframework.data.repository.CrudRepository;
 
-import com.levelup.app.entities.Venta;
+import com.levelup.app.models.Venta;
 
 public interface VentaRepository extends CrudRepository<Venta, Long> {
 

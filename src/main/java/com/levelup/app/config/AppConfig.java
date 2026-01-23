@@ -1,4 +1,4 @@
-package com.levelup.app;
+package com.levelup.app.config;
 
 import java.util.Arrays;
 

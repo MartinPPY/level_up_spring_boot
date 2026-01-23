@@ -8,12 +8,12 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.levelup.app.entities.Comuna;
-import com.levelup.app.entities.Role;
-import com.levelup.app.entities.User;
 import com.levelup.app.exception.NotFoundException;
 import com.levelup.app.exception.UserAlreadyExist;
-import com.levelup.app.models.UserDto;
+import com.levelup.app.models.Comuna;
+import com.levelup.app.models.Role;
+import com.levelup.app.models.User;
+import com.levelup.app.models.dtos.UserDto;
 import com.levelup.app.repositories.ComunaRepository;
 import com.levelup.app.repositories.RoleRepository;
 import com.levelup.app.repositories.UserRepository;

@@ -1,6 +1,4 @@
-package com.levelup.app.entities;
-
-import java.time.LocalDateTime;
+package com.levelup.app.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,29 +9,29 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "venta")
-public class Venta {
+@Table(name = "resenia")
+public class Resenia {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column(nullable = false)
-    private LocalDateTime fecha;
+    private String comentario;
 
     @ManyToOne
-    User user;
-    @ManyToOne
-    Product product;
+    private Product product;
 
-    public Venta() {
-        this.fecha = LocalDateTime.now();
+    @ManyToOne
+    private User user;
+
+    public Resenia() {
     }
 
-    public Venta(LocalDateTime fecha, User user, Product product) {
-        this.fecha = LocalDateTime.now();
-        this.user = user;
+    public Resenia(String comentario, Product product, User user) {
+        this.comentario = comentario;
         this.product = product;
+        this.user = user;
     }
 
     public Long getId() {
@@ -44,20 +42,12 @@ public class Venta {
         this.id = id;
     }
 
-    public LocalDateTime getFecha() {
-        return fecha;
+    public String getComentario() {
+        return comentario;
     }
 
-    public void setFecha(LocalDateTime fecha) {
-        this.fecha = fecha;
-    }
-
-    public User getUser() {
-        return user;
-    }
-
-    public void setUser(User user) {
-        this.user = user;
+    public void setComentario(String comentario) {
+        this.comentario = comentario;
     }
 
     public Product getProduct() {
@@ -68,6 +58,14 @@ public class Venta {
         this.product = product;
     }
 
-    
+    public User getUser() {
+        return user;
+    }
 
+    public void setUser(User user) {
+        this.user = user;
+    }
+
+    
+    
 }

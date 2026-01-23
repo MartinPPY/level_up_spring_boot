@@ -1,19 +1,40 @@
-package com.levelup.app.models;
+package com.levelup.app.models.dtos;
 
 import org.hibernate.validator.constraints.Length;
 
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Pattern;
 
 public class UserDto {
 
+    @Length(min = 7, max = 9)
+    @NotBlank
     private String run;
+
+    @Length(max = 50)
+    @NotBlank
     private String name;
+
+    @Length(max = 100)
+    @NotBlank
     private String lastname;
+
+    @Length(max = 100)
+    @NotBlank
+    @Pattern(regexp = "^[A-Za-z0-9._%+-]+@(gmail\\.com|duoc\\.cl|duocuc\\.cl)$", message = "Solo se permiten correos gmail.com, duoc.cl o duocuc.cl")
     private String email;
+
+    @NotBlank
     private String birthday;
+
+    @Length(max = 10,min = 4)
+    @NotBlank
     private String password;
+
+    @NotNull
     private Integer comunaId;
+
     private Integer role;
 
     public UserDto(String run, String name, String lastname, String email, String birthday, String password,

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.levelup.app.models.UserDto;
+import com.levelup.app.models.dtos.UserDto;
 import com.levelup.app.services.UserService;
 
 import jakarta.validation.Valid;

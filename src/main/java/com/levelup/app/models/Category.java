@@ -1,4 +1,4 @@
-package com.levelup.app.entities;
+package com.levelup.app.models;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -8,20 +8,20 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "role")
-public class Role {
+@Table(name = "category")
+public class Category {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false, length = 100)
+    @Column(nullable = false, length = 30)
     private String name;
 
-    public Role() {
+    public Category() {
     }
 
-    public Role(String name) {
+    public Category(String name) {
         this.name = name;
     }
 
@@ -42,5 +42,5 @@ public class Role {
     }
 
     
-    
+
 }

@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.levelup.app.entities.Comuna;
-import com.levelup.app.entities.Region;
+import com.levelup.app.models.Comuna;
+import com.levelup.app.models.Region;
 import com.levelup.app.services.ComunaServices;
 import com.levelup.app.services.RegionService;
 

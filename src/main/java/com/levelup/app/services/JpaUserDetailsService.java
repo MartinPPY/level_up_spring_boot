@@ -14,7 +14,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.levelup.app.entities.User;
+import com.levelup.app.models.User;
 import com.levelup.app.repositories.UserRepository;
 
 @Service
