@@ -36,8 +36,13 @@ public class User {
     @Column(nullable = false)
     private String password;
 
+    @Column(length = 300,nullable = false)
+    private String addres;
+
     @ManyToOne
     private Comuna comuna;
+
+    
 
     @ManyToOne
     private Role role;
@@ -45,7 +50,7 @@ public class User {
     public User() {
     }
 
-    public User(String run, String name, String lastname, String email, LocalDate birthday, String password,
+    public User(String run, String name, String lastname, String email, LocalDate birthday, String password, String addres,
             Comuna comuna, Role role) {
         this.run = run;
         this.name = name;
@@ -53,9 +58,12 @@ public class User {
         this.email = email;
         this.birthday = birthday;
         this.password = password;
+        this.addres = addres;
         this.comuna = comuna;
         this.role = role;
     }
+
+    
 
     public Long getId() {
         return id;
@@ -127,6 +135,14 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public String getAddres() {
+        return addres;
+    }
+
+    public void setAddres(String addres) {
+        this.addres = addres;
     }
 
 }

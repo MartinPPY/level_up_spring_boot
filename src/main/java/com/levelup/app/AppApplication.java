@@ -35,7 +35,7 @@ public class AppApplication {
 			Role role = roleRepository.findById(3L).orElseThrow();
 
 			User user = new User("21340282K", "admin", "admin", "admin@gmail.com", 
-			LocalDate.of(1990, 1, 1), encoder.encode("admin"), comuna, role);
+			LocalDate.of(1990, 1, 1), encoder.encode("admin"),"Cerrillos #213", comuna, role);
 
 			userRepository.save(user);			
 			

@@ -59,8 +59,14 @@ public class UserServiceImpl implements UserService {
             throw new UserAlreadyExist("Este email ya esta registrado!");
         }
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yyyy");
-        LocalDate birthday = LocalDate.parse(user.getBirthday(), formatter);
+        
+        LocalDate birthday = null;
+        
+        if(user.getBirthday() != null && !user.getBirthday().isEmpty()){
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            birthday = LocalDate.parse(user.getBirthday(), formatter);
+        }
+
         String encodedPassword = passwordEncoder.encode(user.getPassword());
 
         User newUser = new User(
@@ -70,6 +76,7 @@ public class UserServiceImpl implements UserService {
                 user.getEmail(),
                 birthday,
                 encodedPassword,
+                user.getAddres(),
                 comuna,
                 role);
 

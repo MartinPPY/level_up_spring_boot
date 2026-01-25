@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Pattern;
 
 public class UserDto {
 
-    @Length(min = 7, max = 9)
+    @Length(min = 7, max = 9,message = "El RUN debe tener entre 7 y 9 caracteres")
     @NotBlank
     private String run;
 
@@ -25,19 +25,22 @@ public class UserDto {
     @Pattern(regexp = "^[A-Za-z0-9._%+-]+@(gmail\\.com|duoc\\.cl|duocuc\\.cl)$", message = "Solo se permiten correos gmail.com, duoc.cl o duocuc.cl")
     private String email;
 
-    @NotBlank
     private String birthday;
 
     @Length(max = 10,min = 4)
     @NotBlank
     private String password;
 
+    @NotBlank
+    @Length(max = 300)
+    private String addres;
+
     @NotNull
     private Integer comunaId;
 
     private Integer role;
 
-    public UserDto(String run, String name, String lastname, String email, String birthday, String password,
+    public UserDto(String run, String name, String lastname, String email, String birthday, String password, String addres,
             Integer comunaId, Integer role) {
         this.run = run;
         this.name = name;
@@ -45,9 +48,12 @@ public class UserDto {
         this.email = email;
         this.birthday = birthday;
         this.password = password;
+        this.addres = addres;
         this.comunaId = comunaId;
         this.role = role;
     }
+
+    
 
     public String getRun() {
         return run;
@@ -114,6 +120,18 @@ public class UserDto {
 
     public void setRole(Integer role) {
         this.role = role;
+    }
+
+
+
+    public String getAddres() {
+        return addres;
+    }
+
+
+
+    public void setAddres(String addres) {
+        this.addres = addres;
     }
 
 }
