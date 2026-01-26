@@ -80,7 +80,8 @@ public class JwtValidationFilter extends BasicAuthenticationFilter {
         String path = request.getServletPath();
         return path.startsWith("/swagger")
                 || path.startsWith("/v3/api-docs")
-                || path.startsWith("/auth/register");
+                || path.startsWith("/auth/register")
+                || path.startsWith("/login");
     }
 
 }
