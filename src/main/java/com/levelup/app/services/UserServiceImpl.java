@@ -2,6 +2,7 @@ package com.levelup.app.services;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -83,4 +84,9 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(newUser);
     }
 
+
+    @Override
+    public List<User> findAll() {
+        return (List<User>) userRepository.findAll();
+    }
 }
