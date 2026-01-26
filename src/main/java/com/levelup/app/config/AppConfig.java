@@ -39,7 +39,9 @@ public class AppConfig {
         return httpSecurity.authorizeHttpRequests(authz -> authz
                 .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/locations/**").permitAll()
-                .requestMatchers(HttpMethod.POST,"/login").permitAll()
+                .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                .requestMatchers(HttpMethod.GET, "/roles").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/categories").permitAll()
                 .requestMatchers(
                         "/swagger-ui.html",
                         "/swagger-ui/**",
