@@ -117,8 +117,27 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDto findUserDtoById(Long id) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'findUserDtoById'");
+        User userDb = userRepository.findById(id).orElseThrow(() -> new NotFoundException("Usuario no encontrado!"));
+
+        String birthdayStr = null;
+        if (userDb.getBirthday() != null) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            birthdayStr = userDb.getBirthday().format(formatter);
+        }
+
+        UserDto userDto = new UserDto(
+                userDb.getRun(),
+                userDb.getName(),
+                userDb.getLastname(),
+                userDb.getEmail(),
+                birthdayStr,
+                userDb.getAddres(),
+                userDb.getComuna().getId(),
+                userDb.getRole().getId(),
+                userDb.getId());
+        
+        return userDto;
+
     }
 
     @Override

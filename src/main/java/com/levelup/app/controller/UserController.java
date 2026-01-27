@@ -34,12 +34,10 @@ public class UserController {
 
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteById(@PathVariable Long id) {
-        userService.destroy(id);
-        Map<String, Object> response = new HashMap<>();
-        response.put("message", "Usuario eliminado!");
-        return ResponseEntity.ok().body(response);
+    @GetMapping("/{id}")
+    public ResponseEntity<?> getUserById(@PathVariable Long id) {
+
+        return ResponseEntity.ok().body(userService.findUserDtoById(id));
     }
 
     @PostMapping
@@ -54,6 +52,14 @@ public class UserController {
         response.put("message", "Registro exitoso!");
         return ResponseEntity.status(HttpStatus.CREATED.value()).body(response);
 
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<?> deleteById(@PathVariable Long id) {
+        userService.destroy(id);
+        Map<String, Object> response = new HashMap<>();
+        response.put("message", "Usuario eliminado!");
+        return ResponseEntity.ok().body(response);
     }
 
     private ResponseEntity<?> validation(BindingResult result) {
