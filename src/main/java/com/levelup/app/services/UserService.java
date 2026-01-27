@@ -12,4 +12,6 @@ public interface UserService {
     List<UserDto> findAllUserDto();
 
     UserDto findUserDtoById(Long id);
+
+    void destroy(Long id);
 }

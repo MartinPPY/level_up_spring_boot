@@ -8,6 +8,8 @@ import jakarta.validation.constraints.Pattern;
 
 public class UserDto {
 
+    private Long id;
+
     @Length(min = 7, max = 9, message = "El RUN debe tener entre 7 y 9 caracteres")
     @NotBlank
     private String run;
@@ -40,6 +42,10 @@ public class UserDto {
 
     private Long role;
 
+    public UserDto(){
+        
+    }
+
     public UserDto(String run, String name, String lastname, String email, String birthday, String password,
             String addres,
             Long comunaId, Long role) {
@@ -55,7 +61,7 @@ public class UserDto {
     }
 
     public UserDto(String run, String name, String lastname, String email, String birthday, String addres,
-            Long comunaId, Long role) {
+            Long comunaId, Long role,Long id) {
 
         this.run = run;
         this.name = name;
@@ -65,8 +71,12 @@ public class UserDto {
         this.addres = addres;
         this.comunaId = comunaId;
         this.role = role;
+        this.id = id;
 
     }
+
+    
+
 
     public String getRun() {
         return run;
@@ -141,6 +151,14 @@ public class UserDto {
 
     public void setAddres(String addres) {
         this.addres = addres;
+    }
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
     }
 
 }
