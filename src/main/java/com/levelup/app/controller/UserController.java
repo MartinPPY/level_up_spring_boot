@@ -1,7 +1,6 @@
 package com.levelup.app.controller;
 
-
-import com.levelup.app.models.User;
+import com.levelup.app.models.dtos.UserDto;
 import com.levelup.app.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -19,8 +18,8 @@ public class UserController {
     private UserService userService;
 
     @GetMapping
-    public ResponseEntity<List<User>> getAlluser() {
-        return ResponseEntity.ok().body(userService.findAll());
+    public ResponseEntity<List<UserDto>> getAlluser() {
+        return ResponseEntity.ok().body(userService.findAllUserDto());
 
     }
 }

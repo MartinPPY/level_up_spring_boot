@@ -2,6 +2,7 @@ package com.levelup.app.services;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -86,7 +87,40 @@ public class UserServiceImpl implements UserService {
 
 
     @Override
-    public List<User> findAll() {
-        return (List<User>) userRepository.findAll();
+    public List<UserDto> findAllUserDto() {
+        List<UserDto> users = new ArrayList<>();
+
+        for(User user: userRepository.findAll()){
+
+            String birthdayStr = null;
+            if(user.getBirthday() != null){
+                DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+                birthdayStr = user.getBirthday().format(formatter);
+            }
+            
+            UserDto userDto = new UserDto(
+                    user.getRun(),
+                    user.getName(),
+                    user.getLastname(),
+                    user.getEmail(),
+                    birthdayStr,
+                    user.getAddres(),
+                    user.getComuna().getId(),
+                    user.getRole().getId()
+            );
+            users.add(userDto);
+
+        }
+
+
+        return users;
+        
+    }
+
+
+    @Override
+    public UserDto findUserDtoById(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findUserDtoById'");
     }
 }

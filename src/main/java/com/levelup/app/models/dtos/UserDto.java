@@ -8,7 +8,7 @@ import jakarta.validation.constraints.Pattern;
 
 public class UserDto {
 
-    @Length(min = 7, max = 9,message = "El RUN debe tener entre 7 y 9 caracteres")
+    @Length(min = 7, max = 9, message = "El RUN debe tener entre 7 y 9 caracteres")
     @NotBlank
     private String run;
 
@@ -27,7 +27,7 @@ public class UserDto {
 
     private String birthday;
 
-    @Length(max = 10,min = 4)
+    @Length(max = 10, min = 4)
     @NotBlank
     private String password;
 
@@ -36,12 +36,13 @@ public class UserDto {
     private String addres;
 
     @NotNull
-    private Integer comunaId;
+    private Long comunaId;
 
-    private Integer role;
+    private Long role;
 
-    public UserDto(String run, String name, String lastname, String email, String birthday, String password, String addres,
-            Integer comunaId, Integer role) {
+    public UserDto(String run, String name, String lastname, String email, String birthday, String password,
+            String addres,
+            Long comunaId, Long role) {
         this.run = run;
         this.name = name;
         this.lastname = lastname;
@@ -53,7 +54,19 @@ public class UserDto {
         this.role = role;
     }
 
-    
+    public UserDto(String run, String name, String lastname, String email, String birthday, String addres,
+            Long comunaId, Long role) {
+
+        this.run = run;
+        this.name = name;
+        this.lastname = lastname;
+        this.email = email;
+        this.birthday = birthday;
+        this.addres = addres;
+        this.comunaId = comunaId;
+        this.role = role;
+
+    }
 
     public String getRun() {
         return run;
@@ -106,29 +119,25 @@ public class UserDto {
         this.password = password;
     }
 
-    public Integer getComunaId() {
+    public Long getComunaId() {
         return comunaId;
     }
 
-    public void setComunaId(Integer comunaId) {
+    public void setComunaId(Long comunaId) {
         this.comunaId = comunaId;
     }
 
-    public Integer getRole() {
+    public Long getRole() {
         return role;
     }
 
-    public void setRole(Integer role) {
+    public void setRole(Long role) {
         this.role = role;
     }
-
-
 
     public String getAddres() {
         return addres;
     }
-
-
 
     public void setAddres(String addres) {
         this.addres = addres;
