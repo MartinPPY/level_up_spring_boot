@@ -12,5 +12,6 @@ public interface ProductService {
 
     Product save (ProductDto product);
     
+    void deleteById(String code);
 
 }
