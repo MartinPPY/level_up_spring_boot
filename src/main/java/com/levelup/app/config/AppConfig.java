@@ -40,6 +40,7 @@ public class AppConfig {
                 .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/locations/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/login").permitAll()
+                .requestMatchers(HttpMethod.GET, "/login").permitAll()
                 .requestMatchers(HttpMethod.GET, "/productos/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/categories").permitAll()
                 .requestMatchers(
@@ -49,7 +50,7 @@ public class AppConfig {
                 .permitAll()
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                 .requestMatchers(HttpMethod.GET, "/users/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.POST, "/productos").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/productos").permitAll()
                 .requestMatchers(HttpMethod.PUT, "/productos/**").hasAnyRole("ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/productos/**").hasAnyRole("ADMIN")
                 .requestMatchers(HttpMethod.GET, "/roles").hasRole("ADMIN")
