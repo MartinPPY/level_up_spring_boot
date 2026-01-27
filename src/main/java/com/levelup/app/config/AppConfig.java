@@ -41,11 +41,6 @@ public class AppConfig {
                 .requestMatchers(HttpMethod.GET, "/locations/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/login").permitAll()
                 .requestMatchers(HttpMethod.GET, "/productos/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/users/**").permitAll()
-                .requestMatchers(HttpMethod.POST, "/productos").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.PUT, "/productos/**").hasAnyRole("ADMIN")
-                .requestMatchers(HttpMethod.DELETE, "/productos/**").hasAnyRole("ADMIN")
-                .requestMatchers(HttpMethod.GET, "/roles").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.GET, "/categories").permitAll()
                 .requestMatchers(
                         "/swagger-ui.html",
@@ -53,6 +48,12 @@ public class AppConfig {
                         "/v3/api-docs/**")
                 .permitAll()
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/users/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/productos").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/productos/**").hasAnyRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/productos/**").hasAnyRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/roles").hasRole("ADMIN")
+
                 .anyRequest().authenticated())
                 .addFilterBefore(new JwtAuthenticationFilter(authenticationManager()),
                         UsernamePasswordAuthenticationFilter.class)
