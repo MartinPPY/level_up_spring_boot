@@ -39,5 +39,11 @@ public class ProductServiceImpl implements ProductService {
 
         return productRepository.save(producto);
     }
-
+    @Transactional
+    @Override
+    public void deleteById(String code) {
+        Product product = productRepository.findById(code)
+                .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
+        productRepository.delete(product);
+    }
 }
