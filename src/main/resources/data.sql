@@ -48,66 +48,66 @@ VALUES
 ('JM001', 'Catan',
  'Un clásico juego de estrategia donde los jugadores compiten por colonizar y expandirse en la isla de Catan. Ideal para 3-4 jugadores y perfecto para noches de juego en familia o con amigos.',
  29990, 10, 3,
- '../assets/images/products/catan.webp',
+ '/images/products/catan.webp',
  (SELECT id FROM category WHERE name = 'Juegos de Mesa')),
 
 ('JM002', 'Carcassonne',
  'Un juego de colocación de fichas donde los jugadores construyen el paisaje alrededor de la fortaleza medieval de Carcassonne. Ideal para 2-5 jugadores y fácil de aprender.',
  24990, 10, 3,
- '../assets/images/products/carcassonne.jpg',
+ '/images/products/carcassonne.jpg',
  (SELECT id FROM category WHERE name = 'Juegos de Mesa')),
 
 -- Accesorios
 ('AC001', 'Controlador Inalámbrico Xbox Series X',
  'Ofrece una experiencia de juego cómoda con botones mapeables y una respuesta táctil mejorada. Compatible con consolas Xbox y PC.',
  59990, 10, 3,
- '../assets/images/products/control-xbox-series-x.jpg',
+ '/images/products/control-xbox-series-x.jpg',
  (SELECT id FROM category WHERE name = 'Accesorios')),
 
 ('AC002', 'Auriculares Gamer HyperX Cloud II',
  'Proporcionan un sonido envolvente de calidad con un micrófono desmontable y almohadillas de espuma viscoelástica para mayor comodidad durante largas sesiones de juego.',
  79990, 10, 3,
- '../assets/images/products/Auriculares-Gamer-HyperX-Cloud-II.jpg',
+ '/images/products/Auriculares-Gamer-HyperX-Cloud-II.jpg',
  (SELECT id FROM category WHERE name = 'Accesorios')),
 
 -- Consolas
 ('C0001', 'PlayStation 5',
  'La consola de última generación de Sony, que ofrece gráficos impresionantes y tiempos de carga ultrarrápidos para una experiencia de juego inmersiva.',
  549990, 10, 2,
- '../assets/images/products/PlayStation-5.jpg',
+ '/images/products/PlayStation-5.jpg',
  (SELECT id FROM category WHERE name = 'Consolas')),
 
 -- Computadores Gamers
 ('CG001', 'PC Gamer ASUS ROG Strix',
  'Un potente equipo diseñado para los gamers más exigentes, equipado con los últimos componentes para ofrecer un rendimiento excepcional en cualquier juego.',
  1299990, 10, 1,
- '../assets/images/products/PC-Gamer-ASUS-ROG-Strix.jpg',
+ '/images/products/PC-Gamer-ASUS-ROG-Strix.jpg',
  (SELECT id FROM category WHERE name = 'Computadores Gamers')),
 
 -- Sillas Gamers
 ('SG001', 'Silla Gamer Secretlab Titan',
  'Diseñada para el máximo confort, esta silla ofrece un soporte ergonómico y personalización ajustable para sesiones de juego prolongadas.',
  349990, 10, 2,
- '../assets/images/products/Silla-Gamer-Secretlab-Titan.jpg',
+ '/images/products/Silla-Gamer-Secretlab-Titan.jpg',
  (SELECT id FROM category WHERE name = 'Sillas Gamers')),
 
 -- Mouse
 ('MS001', 'Mouse Gamer Logitech G502 HERO',
  'Con sensor de alta precisión y botones personalizables, este mouse es ideal para gamers que buscan un control preciso y personalización.',
  49990, 10, 3,
- '../assets/images/products/Mouse-Gamer-Logitech-G502-HERO.jpg',
+ '/images/products/Mouse-Gamer-Logitech-G502-HERO.jpg',
  (SELECT id FROM category WHERE name = 'Mouse')),
 
 -- Mousepad
 ('MP001', 'Mousepad Razer Goliathus Extended Chroma',
  'Ofrece un área de juego amplia con iluminación RGB personalizable, asegurando una superficie suave y uniforme para el movimiento del mouse.',
  29990, 10, 3,
- '../assets/images/products/Mousepad-Razer-Goliathus-Extended-Chroma.jpg',
+ '/images/products/Mousepad-Razer-Goliathus-Extended-Chroma.jpg',
  (SELECT id FROM category WHERE name = 'Mousepad')),
 
 -- Poleras Personalizadas
 ('PP001', 'Polera Gamer Personalizada Level-Up',
  'Una camiseta cómoda y estilizada, con la posibilidad de personalizarla con tu gamer tag o diseño favorito.',
  14990, 10, 5,
- '../assets/images/products/Polera-Gamer-Personalizada-Level-Up.jpg',
+ '/images/products/Polera-Gamer-Personalizada-Level-Up.jpg',
  (SELECT id FROM category WHERE name = 'Poleras Personalizadas'));

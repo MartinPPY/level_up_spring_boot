@@ -25,9 +25,8 @@ public class Product {
     @Column(nullable = false)
     private Long stock;
 
-
     private Long stockCritico;
-    
+
     private String image;
 
     @ManyToOne
@@ -36,7 +35,8 @@ public class Product {
     public Product() {
     }
 
-    public Product(String code, String name, Double precio, Long stock, Long stockCritico, String image,
+    public Product(String code, String name, Double precio, Long stock, Long stockCritico, String description,
+            String image,
             Category category) {
         this.code = code;
         this.name = name;
@@ -45,7 +45,10 @@ public class Product {
         this.stockCritico = stockCritico;
         this.image = image;
         this.category = category;
+        this.description = description;
     }
+
+    
 
     public String getCode() {
         return code;
@@ -103,6 +106,12 @@ public class Product {
         this.category = category;
     }
 
-    
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
 }
