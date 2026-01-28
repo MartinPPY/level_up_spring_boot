@@ -30,18 +30,25 @@ public class ProductController {
     public ResponseEntity<List<Product>> getAllproduct() {
         return ResponseEntity.ok().body(productService.findAll());
     }
-    @PostMapping 
-    public ResponseEntity<Product> create(@RequestBody ProductDto productDto){
+
+    @GetMapping("/{code}")
+    public ResponseEntity<?> getProductById(@PathVariable String code) {
+        return ResponseEntity.ok().body(productService.findProductDto(code));
+    }
+
+    @PostMapping
+    public ResponseEntity<Product> create(@RequestBody ProductDto productDto) {
         Product newProduct = productService.save(productDto);
         return ResponseEntity.status(HttpStatus.CREATED.value()).body(newProduct);
     }
+
     @DeleteMapping("/{code}")
     public ResponseEntity<?> deleteProduct(@PathVariable String code) {
-        Map<String,Object> response = new HashMap<>();
+        Map<String, Object> response = new HashMap<>();
 
         response.put("message", "Producto eliminado");
 
         productService.deleteById(code);
         return ResponseEntity.ok().body(response);
-    }   
+    }
 }

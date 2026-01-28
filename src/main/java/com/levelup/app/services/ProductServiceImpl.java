@@ -27,18 +27,30 @@ public class ProductServiceImpl implements ProductService {
         return (List<Product>) productRepository.findAll();
     }
 
+    @Transactional(readOnly = true)
+    @Override
+    public ProductDto findProductDto(String code) {
+        System.out.println(code);
+        Product productDb = productRepository.findById(code).orElseThrow(
+                () -> new NotFoundException("Producto no encontrado!"));
+
+        ProductDto productDto = new ProductDto(code, productDb.getName(), productDb.getPrecio(), productDb.getStock(),
+                productDb.getStockCritico(), productDb.getDescription(), productDb.getImage(),
+                productDb.getCategory().getId().intValue());
+
+        return productDto;
+    }
+
     @Transactional
     @Override
     public Product save(ProductDto product) {
-        
+
         Category category = categoryRepository.findById(product.getCategory().longValue()).orElseThrow(
-            ()-> new NotFoundException("Categoria no encontrada!")
-        );
+                () -> new NotFoundException("Categoria no encontrada!"));
 
         Product producto = new Product(product.getCode(), product.getName(),
                 product.getPrecio(), product.getStock(), product.getStockCritico(),
                 product.getDescription(), product.getImage(), category);
-
 
         return productRepository.save(producto);
     }
@@ -50,7 +62,5 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
         productRepository.delete(product);
     }
-
-
 
 }

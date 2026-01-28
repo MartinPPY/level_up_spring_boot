@@ -10,6 +10,8 @@ public interface ProductService {
 
     List<Product> findAll();
 
+    ProductDto findProductDto(String code);
+
     Product save (ProductDto product);
     
     void deleteById(String code);
