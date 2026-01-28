@@ -23,19 +23,26 @@ public class Venta {
 
     @ManyToOne
     User user;
-    
+
+
     @ManyToOne
     Product product;
+
+    @Column(nullable = false)
+    Integer cantidad;
 
     public Venta() {
         this.fecha = LocalDateTime.now();
     }
 
-    public Venta(LocalDateTime fecha, User user, Product product) {
+    public Venta(LocalDateTime fecha, User user, Product product, Integer cantidad) {
         this.fecha = LocalDateTime.now();
         this.user = user;
         this.product = product;
+        this.cantidad = cantidad;
     }
+
+    
 
     public Long getId() {
         return id;
@@ -67,6 +74,14 @@ public class Venta {
 
     public void setProduct(Product product) {
         this.product = product;
+    }
+
+    public Integer getCantidad() {
+        return cantidad;
+    }
+
+    public void setCantidad(Integer cantidad) {
+        this.cantidad = cantidad;
     }
 
     

@@ -49,8 +49,8 @@ public class AppConfig {
                         "/v3/api-docs/**")
                 .permitAll()
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
-                
-                .requestMatchers(HttpMethod.GET,"/auth/isadmin").hasRole("ADMIN")
+
+                .requestMatchers(HttpMethod.GET, "/auth/isadmin").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.GET, "/users/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.POST, "/users/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/users/**").hasRole("ADMIN")
@@ -59,8 +59,11 @@ public class AppConfig {
                 .requestMatchers(HttpMethod.POST, "/productos").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.PUT, "/productos/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.DELETE, "/productos/**").hasRole("ADMIN")
-                
+
                 .requestMatchers(HttpMethod.GET, "/roles").hasRole("ADMIN")
+
+                .requestMatchers(HttpMethod.GET, "/sales/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/sales/**").hasAnyRole("USER", "VENDEDOR")
 
                 .anyRequest().authenticated())
                 .addFilterBefore(new JwtAuthenticationFilter(authenticationManager()),
