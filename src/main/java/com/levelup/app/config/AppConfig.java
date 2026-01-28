@@ -49,6 +49,7 @@ public class AppConfig {
                         "/v3/api-docs/**")
                 .permitAll()
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                
                 .requestMatchers(HttpMethod.GET,"/auth/isadmin").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.GET, "/users/**").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.POST, "/users/**").hasRole("ADMIN")

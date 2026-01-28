@@ -1,7 +1,8 @@
 package com.levelup.app.controller;
 
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -31,13 +32,16 @@ public class ProductController {
     }
     @PostMapping 
     public ResponseEntity<Product> create(@RequestBody ProductDto productDto){
-        System.out.println(productDto.getCode());
         Product newProduct = productService.save(productDto);
         return ResponseEntity.status(HttpStatus.CREATED.value()).body(newProduct);
     }
     @DeleteMapping("/{code}")
-    public ResponseEntity<Void> deleteProduct(@PathVariable String code) {
+    public ResponseEntity<?> deleteProduct(@PathVariable String code) {
+        Map<String,Object> response = new HashMap<>();
+
+        response.put("message", "Producto eliminado");
+
         productService.deleteById(code);
-        return ResponseEntity.noContent().build();
+        return ResponseEntity.ok().body(response);
     }   
 }

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import com.levelup.app.exception.NotFoundException;
 import com.levelup.app.models.Category;
 import com.levelup.app.models.Product;
 import com.levelup.app.models.dtos.ProductDto;
@@ -20,6 +21,7 @@ public class ProductServiceImpl implements ProductService {
     @Autowired
     private CategoryRepository categoryRepository;
 
+    @Transactional(readOnly = true)
     @Override
     public List<Product> findAll() {
         return (List<Product>) productRepository.findAll();
@@ -28,9 +30,10 @@ public class ProductServiceImpl implements ProductService {
     @Transactional
     @Override
     public Product save(ProductDto product) {
-        System.out.println(product.getCode());
-
-        Category category = categoryRepository.findById(product.getCategory().longValue()).orElseThrow();
+        
+        Category category = categoryRepository.findById(product.getCategory().longValue()).orElseThrow(
+            ()-> new NotFoundException("Categoria no encontrada!")
+        );
 
         Product producto = new Product(product.getCode(), product.getName(),
                 product.getPrecio(), product.getStock(), product.getStockCritico(),
@@ -39,6 +42,7 @@ public class ProductServiceImpl implements ProductService {
 
         return productRepository.save(producto);
     }
+
     @Transactional
     @Override
     public void deleteById(String code) {
@@ -46,4 +50,7 @@ public class ProductServiceImpl implements ProductService {
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado"));
         productRepository.delete(product);
     }
+
+
+
 }
