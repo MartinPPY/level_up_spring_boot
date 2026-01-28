@@ -16,4 +16,6 @@ public interface ProductService {
     
     void deleteById(String code);
 
+    Product editProduct(String code, ProductDto productDto);
+
 }

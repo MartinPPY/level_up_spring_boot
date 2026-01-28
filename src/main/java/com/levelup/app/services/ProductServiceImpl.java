@@ -57,6 +57,26 @@ public class ProductServiceImpl implements ProductService {
 
     @Transactional
     @Override
+    public Product editProduct(String code, ProductDto productDto) {
+        Product productDb = productRepository.findById(code).orElseThrow(
+                () -> new NotFoundException("Producto no encontrado!"));
+
+        Category categoryDb = categoryRepository.findById(productDto.getCategory().longValue()).orElseThrow(
+                () -> new NotFoundException("Categoria no encontrada!"));
+
+        productDb.setCode(productDto.getCode());
+        productDb.setCategory(categoryDb);
+        productDb.setDescription(productDto.getDescription());
+        productDb.setName(productDto.getName());
+        productDb.setPrecio(productDto.getPrecio());
+        productDb.setStock(productDto.getStock());
+        productDb.setStockCritico(productDto.getStockCritico());
+
+        return productRepository.save(productDb);
+    }
+
+    @Transactional
+    @Override
     public void deleteById(String code) {
         Product product = productRepository.findById(code)
                 .orElseThrow(() -> new RuntimeException("Producto no encontrado"));

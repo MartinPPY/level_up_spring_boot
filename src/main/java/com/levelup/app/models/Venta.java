@@ -23,6 +23,7 @@ public class Venta {
 
     @ManyToOne
     User user;
+    
     @ManyToOne
     Product product;
 
