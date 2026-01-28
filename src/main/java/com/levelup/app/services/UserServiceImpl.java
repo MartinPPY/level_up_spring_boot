@@ -84,7 +84,7 @@ public class UserServiceImpl implements UserService {
         return userRepository.save(newUser);
     }
 
-    @Transactional
+    @Transactional(readOnly = true)
     @Override
     public List<UserDto> findAllUserDto() {
         List<UserDto> users = new ArrayList<>();
@@ -115,6 +115,7 @@ public class UserServiceImpl implements UserService {
 
     }
 
+    @Transactional(readOnly = true)
     @Override
     public UserDto findUserDtoById(Long id) {
         User userDb = userRepository.findById(id).orElseThrow(() -> new NotFoundException("Usuario no encontrado!"));
@@ -135,15 +136,51 @@ public class UserServiceImpl implements UserService {
                 userDb.getComuna().getId(),
                 userDb.getRole().getId(),
                 userDb.getId());
-        
+
         return userDto;
 
     }
 
+    @Transactional
     @Override
     public void destroy(Long id) {
-
         userRepository.deleteById(id);
+    }
 
+    @Transactional
+    @Override
+    public User editUser(Long id, UserDto userDto) {
+
+        User userDb = userRepository.findById(id).orElseThrow(() -> new NotFoundException("Usuario no encontrado"));
+
+        Comuna comuna = comunaRepository.findById(userDto.getComunaId().longValue()).orElseThrow(
+                () -> new NotFoundException("Comuna no encontrada!"));
+
+        userDb.setComuna(comuna);
+
+        Role role = roleRepository.findById(userDto.getRole().longValue())
+                .orElseThrow(() -> new NotFoundException("El rol no existe!"));
+
+        userDb.setRole(role);
+
+        LocalDate birthday = null;
+
+        if (userDto.getBirthday() != null && !userDto.getBirthday().isEmpty()) {
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+            birthday = LocalDate.parse(userDto.getBirthday(), formatter);
+        }
+
+        userDb.setBirthday(birthday);
+
+        String encodedPassword = passwordEncoder.encode(userDto.getPassword());
+
+        userDb.setRun(userDto.getRun());
+        userDb.setName(userDto.getName());
+        userDb.setLastname(userDto.getLastname());
+        userDb.setEmail(userDto.getEmail());
+        userDb.setPassword(encodedPassword);
+        userDb.setAddres(userDto.getAddres());
+
+        return userRepository.save(userDb);
     }
 }

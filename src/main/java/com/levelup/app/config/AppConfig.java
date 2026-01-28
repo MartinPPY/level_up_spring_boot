@@ -49,10 +49,16 @@ public class AppConfig {
                         "/v3/api-docs/**")
                 .permitAll()
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .requestMatchers(HttpMethod.GET,"/auth/isadmin").hasRole("ADMIN")
                 .requestMatchers(HttpMethod.GET, "/users/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.POST, "/productos").permitAll()
-                .requestMatchers(HttpMethod.PUT, "/productos/**").hasAnyRole("ADMIN")
-                .requestMatchers(HttpMethod.DELETE, "/productos/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/users/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/users/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
+
+                .requestMatchers(HttpMethod.POST, "/productos").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/productos/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/productos/**").hasRole("ADMIN")
+                
                 .requestMatchers(HttpMethod.GET, "/roles").hasRole("ADMIN")
 
                 .anyRequest().authenticated())

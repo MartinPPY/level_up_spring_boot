@@ -45,6 +45,12 @@ public class AuthController {
         return ResponseEntity.ok(authentication.getPrincipal());
     }
 
+    @GetMapping("/isadmin")
+    public ResponseEntity<?> isAdmin(Authentication authentication){
+        return ResponseEntity.ok(authentication.getAuthorities());
+
+    }
+
     private ResponseEntity<?> validation(BindingResult result) {
         Map<String, Object> response = new HashMap<>();
         result.getFieldErrors().forEach(error -> {

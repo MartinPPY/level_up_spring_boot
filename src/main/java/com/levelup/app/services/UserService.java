@@ -14,4 +14,6 @@ public interface UserService {
     UserDto findUserDtoById(Long id);
 
     void destroy(Long id);
+
+    User editUser(Long id,UserDto userDto);
 }
