@@ -1,13 +1,18 @@
 package com.levelup.app.models;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
+import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -24,25 +29,20 @@ public class Venta {
     @ManyToOne
     User user;
 
-
-    @ManyToOne
-    Product product;
-
-    @Column(nullable = false)
-    Integer cantidad;
+    @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL)
+    @JsonManagedReference
+    List<VentaDetalle> detalles;
 
     public Venta() {
         this.fecha = LocalDateTime.now();
     }
 
-    public Venta(LocalDateTime fecha, User user, Product product, Integer cantidad) {
+    public Venta(LocalDateTime fecha, User user, List<VentaDetalle> detalles) {
         this.fecha = LocalDateTime.now();
         this.user = user;
-        this.product = product;
-        this.cantidad = cantidad;
+        this.detalles = detalles;
     }
 
-    
 
     public Long getId() {
         return id;
@@ -68,20 +68,13 @@ public class Venta {
         this.user = user;
     }
 
-    public Product getProduct() {
-        return product;
+
+    public List<VentaDetalle> getDetalles() {
+        return detalles;
     }
 
-    public void setProduct(Product product) {
-        this.product = product;
-    }
-
-    public Integer getCantidad() {
-        return cantidad;
-    }
-
-    public void setCantidad(Integer cantidad) {
-        this.cantidad = cantidad;
+    public void setDetalles(List<VentaDetalle> detalles) {
+        this.detalles = detalles;
     }
 
     

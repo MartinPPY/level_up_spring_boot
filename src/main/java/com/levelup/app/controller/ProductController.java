@@ -24,7 +24,7 @@ import com.levelup.app.services.ProductService;
 import jakarta.validation.Valid;
 
 @RestController
-@RequestMapping("/productos")
+@RequestMapping("/api/v1/productos")
 public class ProductController {
 
     @Autowired

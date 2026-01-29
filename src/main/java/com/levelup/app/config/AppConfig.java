@@ -37,12 +37,12 @@ public class AppConfig {
     @Bean
     SecurityFilterChain securityFilterChain(HttpSecurity httpSecurity) throws Exception {
         return httpSecurity.authorizeHttpRequests(authz -> authz
-                .requestMatchers(HttpMethod.POST, "/auth/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/locations/**").permitAll()
+                .requestMatchers(HttpMethod.POST, "/api/v1/auth/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/v1/locations/**").permitAll()
                 .requestMatchers(HttpMethod.POST, "/login").permitAll()
                 .requestMatchers(HttpMethod.GET, "/login").permitAll()
-                .requestMatchers(HttpMethod.GET, "/productos/**").permitAll()
-                .requestMatchers(HttpMethod.GET, "/categories").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/v1/productos/**").permitAll()
+                .requestMatchers(HttpMethod.GET, "/api/v1/categories").permitAll()
                 .requestMatchers(
                         "/swagger-ui.html",
                         "/swagger-ui/**",
@@ -50,20 +50,20 @@ public class AppConfig {
                 .permitAll()
                 .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
 
-                .requestMatchers(HttpMethod.GET, "/auth/isadmin").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.GET, "/users/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.POST, "/users/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.PUT, "/users/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.DELETE, "/users/**").hasRole("ADMIN")
-
-                .requestMatchers(HttpMethod.POST, "/productos").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.PUT, "/productos/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.DELETE, "/productos/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.GET, "/api/v1/auth/isadmin").hasAnyRole("ADMIN","VENDEDOR")
+                .requestMatchers(HttpMethod.GET, "/api/v1/users/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.POST, "/api/v1/users/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/v1/users/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/api/v1/users/**").hasRole("ADMIN")
+                
+                .requestMatchers(HttpMethod.POST, "/api/v1/productos").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.PUT, "/api/v1/productos/**").hasRole("ADMIN")
+                .requestMatchers(HttpMethod.DELETE, "/api/v1/productos/**").hasRole("ADMIN")
 
                 .requestMatchers(HttpMethod.GET, "/roles").hasRole("ADMIN")
 
-                .requestMatchers(HttpMethod.GET, "/sales/**").hasRole("ADMIN")
-                .requestMatchers(HttpMethod.POST, "/sales/**").hasAnyRole("USER", "VENDEDOR")
+                .requestMatchers(HttpMethod.GET, "/api/v1/sales/**").hasAnyRole("ADMIN","VENDEDOR")
+                .requestMatchers(HttpMethod.POST, "/api/v1/sales/**").hasAnyRole("USER", "VENDEDOR")
 
                 .anyRequest().authenticated())
                 .addFilterBefore(new JwtAuthenticationFilter(authenticationManager()),

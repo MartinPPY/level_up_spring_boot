@@ -33,12 +33,16 @@ public class AppApplication {
 
 			Comuna comuna = comunaRepository.findById(1L).orElseThrow();
 			Role role = roleRepository.findById(3L).orElseThrow();
+			Role role2 = roleRepository.findById(2L).orElseThrow();
 
 			User user = new User("21340282K", "admin", "admin", "admin@gmail.com", 
 			LocalDate.of(1990, 1, 1), encoder.encode("admin"),"Cerrillos #213", comuna, role);
 
+			User user2 = new User("111111111", "vendedor", "vendedor", "vendedor@gmail.com", 
+			LocalDate.of(1990, 1, 1), encoder.encode("vendedor"),"Cerrillos #213", comuna, role2);
 			userRepository.save(user);			
-			
+			userRepository.save(user2);
+
 		};
 	}
 

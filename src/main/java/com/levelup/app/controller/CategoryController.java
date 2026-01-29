@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.levelup.app.services.CategoryService;
 
 @RestController
-@RequestMapping("/categories")
+@RequestMapping("/api/v1/categories")
 public class CategoryController {
 
     @Autowired

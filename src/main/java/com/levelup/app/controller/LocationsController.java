@@ -14,7 +14,7 @@ import com.levelup.app.services.ComunaServices;
 import com.levelup.app.services.RegionService;
 
 @RestController
-@RequestMapping("/locations")
+@RequestMapping("/api/v1/locations")
 public class LocationsController {
 
     @Autowired

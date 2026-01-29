@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.levelup.app.services.RoleService;
 
 @RestController
-@RequestMapping("/roles")
+@RequestMapping("/api/v1/roles")
 public class RoleController {
 
     @Autowired
